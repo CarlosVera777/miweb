@@ -1,21 +1,6 @@
-using Core;
-using Microsoft.Extensions.Options;
-
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.Configure<FruitOptions>(options =>
-{
-	options.Name = "Sandia";
-});
-
 var app = builder.Build();
-
-//app.MapGet("/fruit", async (HttpContext context, IOptions<FruitOptions> FruitOptions) => {
-//	FruitOptions options = FruitOptions.Value;
-//	await context.Response.WriteAsync($"{options.Name}, {options.Color }");
-//});
-
-app.UseMiddleware<FruitMiddleware>();
 
 app.MapGet("/", () => "Hello World!");
 
